@@ -34,16 +34,19 @@ Lv6 吧\~\~\~\~
 
 **Please be sure to abide by the Github terms of service. Don’t abuse the Actions workflow.**
 
-
-<div align="center">
-
-[也可点击此处一键加群](https://qm.qq.com/cgi-bin/qm/qr?k=m_M1Fydi3MvrVAEM0Sp6hDfZF4N2SpXU&jump_from=webapi)
-
-qq 群二维码
-
-![qq群二维码](docs/IMG/qqgroup.png)
-
 </div>
+
+## 优化改动项
+
+1. 将 linux crontab 启动方式 改为使用 scheduledThreadPoolExecutor启动，
+
+减少了部署环境的配置
+
+2. 调整了日志依赖，解决了依赖间的冲突
+
+3. 扩展启动方式，不使用命令行的方式，而是使用配置文件的方式来获取配置参数
+
+4. 添加 supervisor 服务启动脚本
 
 ## 功能列表
 
