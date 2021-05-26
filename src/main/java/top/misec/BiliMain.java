@@ -30,7 +30,7 @@ public class BiliMain {
     public static void main(String[] args) {
         log.info("开始轻松获取B站经验值");
         ScheduledThreadPoolExecutor scheduledThreadPoolExecutor = new ScheduledThreadPoolExecutor(1, new ThreadPoolExecutor.AbortPolicy());
-        scheduledThreadPoolExecutor.scheduleAtFixedRate(() -> execute(buildArray(args)), initialDelay(), 1, TimeUnit.DAYS);
+        scheduledThreadPoolExecutor.scheduleAtFixedRate(() -> execute(buildArray(args)), initialDelay(), TimeUnit.DAYS.toSeconds(1), TimeUnit.SECONDS);
     }
 
     private static String[] buildArray(String[] args) {
@@ -65,7 +65,7 @@ public class BiliMain {
 
     private static long initialDelay() {
         ExecutionTime executionTime = ExecutionTime.forCron(new CronParser(CronDefinitionBuilder
-                .instanceDefinitionFor(CronType.QUARTZ)).parse("0 30 17 * * ?"));
+                .instanceDefinitionFor(CronType.QUARTZ)).parse("0 40 10 * * ?"));
         long epochSecond = executionTime.nextExecution(ZonedDateTime.now(ZoneId.systemDefault()))
                 .orElse(ZonedDateTime.now(ZoneId.systemDefault())).toEpochSecond();
         return epochSecond - Instant.now().getEpochSecond();
