@@ -65,7 +65,7 @@ public class BiliMain {
 
     private static long initialDelay() {
         ExecutionTime executionTime = ExecutionTime.forCron(new CronParser(CronDefinitionBuilder
-                .instanceDefinitionFor(CronType.QUARTZ)).parse("0 40 10 * * ?"));
+                .instanceDefinitionFor(CronType.QUARTZ)).parse("0 10 16 * * ?"));
         long epochSecond = executionTime.nextExecution(ZonedDateTime.now(ZoneId.systemDefault()))
                 .orElse(ZonedDateTime.now(ZoneId.systemDefault())).toEpochSecond();
         return epochSecond - Instant.now().getEpochSecond();

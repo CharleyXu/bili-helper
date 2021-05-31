@@ -16,7 +16,7 @@ import java.util.Objects;
 public class LoadFileResource {
 
     public static String loadConfigJsonFromFile() {
-        return loadConfigJsonFromFile("config.json");
+        return loadJsonFromAsset("config.json");
     }
 
     public static String[] loadUserInfoFromFile() {
@@ -86,10 +86,9 @@ public class LoadFileResource {
             is.read(buffer);
             config = new String(buffer, StandardCharsets.UTF_8);
         } catch (FileNotFoundException e) {
-            log.info("未扫描到外部配置文件，即将加载默认配置文件【此提示仅针自行部署的Linux用户，普通用户请忽略】");
+            log.error("未扫描到外部配置文件，即将加载默认配置文件【此提示仅针自行部署的Linux用户，普通用户请忽略】路径：{}", outPath, e);
         } catch (IOException e) {
-            e.printStackTrace();
-            log.debug("", e);
+            log.error(e.getMessage(), e);
         }
         return config;
     }
